@@ -1,5 +1,3 @@
-# defines what a project file looks like
-
 from pydantic import BaseModel
 from typing import List
 
@@ -9,6 +7,8 @@ class ProjectFile(BaseModel):
     content: str
 
 
-class ProjectContext(BaseModel):
+class ProjectScanResult(BaseModel):
     framework: str
-    files: List[ProjectFile]
+    total_files_received: int
+    total_files_selected: int
+    selected_files: List[ProjectFile]

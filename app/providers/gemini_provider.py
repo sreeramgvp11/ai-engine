@@ -1,4 +1,5 @@
-from langchain_google_genai import ChatGoogleGenerativeAI # type: ignore
+from langchain_core.messages import SystemMessage, HumanMessage
+from langchain_google_genai import ChatGoogleGenerativeAI
 from app.providers.base import BaseLLMProvider
 
 
@@ -10,6 +11,9 @@ class GeminiProvider(BaseLLMProvider):
             temperature=0.2
         )
 
-    def invoke(self, prompt: str) -> str:
-        response = self.llm.invoke(prompt)
+    def invoke(self, system_prompt: str, user_prompt: str) -> str:
+        response = self.llm.invoke([
+            SystemMessage(content=system_prompt),
+            HumanMessage(content=user_prompt)
+        ])
         return response.content

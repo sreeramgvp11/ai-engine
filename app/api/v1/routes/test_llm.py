@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
-
+from app.utils.prompt_loader import load_prompt
 from app.schemas.provider import ProviderConfig
 from app.providers.llm_factory import get_llm_provider
 
@@ -25,7 +25,8 @@ async def test_llm(request: TestLLMRequest):
         )
 
         llm = get_llm_provider(config)
-        response = llm.invoke(request.prompt)
+        system_prompt = load_prompt("system/debugmentor_system.txt")
+        response = llm.invoke(system_prompt, request.prompt)
 
         return {
             "provider": request.provider,
