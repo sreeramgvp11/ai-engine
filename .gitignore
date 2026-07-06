@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual Environment
+.venv/
+venv/
+env/
+
+# Environment Variables
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Type checking
+.mypy_cache/
+
+# Ruff
+.ruff_cache/
+
+# Logs
+*.log
+
+# Build
+dist/
+build/
+*.egg-info/
+
+# Docker
+docker-compose.override.yml
+
+# Secrets
+secrets/
+credentials/
+
+# Generated files
+generated_bugs/
